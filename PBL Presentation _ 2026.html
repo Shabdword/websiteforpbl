@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PBL Presentation | 2026</title>
+    <!-- Chart.js CDN for the graph -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Tailwind CSS (via CDN for standalone usage) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+        body {
+            background-color: #18181b;
+            /* Zinc 900 - Darker, neutral grey background */
+            color: #f4f4f5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* New Gradient: Cyan to Emerald */
+        .gradient-text {
+            background: linear-gradient(90deg, #22d3ee, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 glass border-b border-zinc-800 px-8 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <!-- Logo Removed -->
+            <div class="flex flex-col text-left">
+                <span class="text-xl font-black text-white leading-none uppercase tracking-tighter">PBL <span
+                        class="text-emerald-400 italic">2026</span></span>
+                <span class="text-[9px] text-zinc-400 font-bold uppercase tracking-widest mt-1">Dept. of Computer
+                    Science & Engineering</span>
+            </div>
+        </div>
+        <div class="hidden md:flex gap-8 text-[11px] uppercase tracking-widest font-bold opacity-70">
+            <a href="#problem" class="hover:text-emerald-400 transition">Problem</a>
+            <a href="#methodology" class="hover:text-emerald-400 transition">Methodology</a>
+            <a href="#results" class="hover:text-emerald-400 transition">Results</a>
+            <a href="#team" class="hover:text-emerald-400 transition">Team</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 pt-48 pb-32 space-y-32">
+
+        <!-- Title Section -->
+        <section class="text-center">
+            <div
+                class="inline-block px-4 py-1 border border-zinc-700 rounded-full text-zinc-500 text-[10px] font-mono mb-6 uppercase tracking-widest">
+                ID: 23FE10CSE00234
+            </div>
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-8 uppercase leading-tight">
+                <span class="gradient-text uppercase">ASL Sign Language Tracker</span>
+            </h1>
+            <p
+                class="text-zinc-400 max-w-3xl mx-auto italic text-lg leading-relaxed border-l-2 border-emerald-500/30 pl-6 text-left">
+                "This project aims to develop a real-time hand gesture recognition system using computer vision and
+                machine learning to assist individuals with speech impairments. The system detects and classifies static
+                and dynamic hand gestures through a webcam and converts them into meaningful digital outputs."
+            </p>
+        </section>
+
+        <!-- Problem Statement Section -->
+        <section id="problem" class="grid md:grid-cols-2 gap-12 items-stretch">
+            <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center border-l-4 border-emerald-600">
+                <h2 class="text-3xl font-extrabold mb-6">Problem Statement</h2>
+                <p class="text-zinc-400 leading-relaxed text-justify">
+                    Many individuals with speech impairments rely on hand gestures or sign language to communicate.
+                    However, not everyone understands sign language, creating communication barriers in daily
+                    interactions, education, and workplaces. Existing assistive communication systems are either
+                    hardware-dependent, expensive, or computationally heavy. There is a need for a lightweight,
+                    real-time, camera-based solution that can recognize gestures accurately and convert them into
+                    understandable outputs without requiring additional wearable devices.
+                </p>
+            </div>
+            <div class="space-y-6">
+                <div class="glass p-7 rounded-3xl border-r-4 border-cyan-500/50">
+                    <h3 class="text-cyan-400 font-bold text-xs uppercase tracking-widest mb-2">Literature Review /
+                        Market Research</h3>
+                    <p class="text-sm text-zinc-500 italic">
+                        Existing gesture recognition systems primarily rely on deep learning models trained on full
+                        image datasets, requiring high computational power. Some systems use sensor-based gloves or
+                        external hardware, increasing cost and reducing portability. MediaPipe provides efficient
+                        21-point hand landmark detection, which significantly improves real-time tracking performance.
+                        However, most implementations focus only on static gestures and do not effectively combine
+                        spatial landmark data with temporal motion tracking for dynamic gesture recognition.
+                    </p>
+                </div>
+                <div class="glass p-7 rounded-3xl border-r-4 border-teal-500/50">
+                    <h3 class="text-teal-400 font-bold text-xs uppercase tracking-widest mb-2">Research Gap / Innovation
+                    </h3>
+                    <p class="text-sm text-zinc-500 italic">
+                        Most current systems either recognize static gestures or require heavy deep learning
+                        architectures for dynamic gesture detection. This project introduces a lightweight
+                        dual-classifier approach that combines spatial landmark normalization with temporal point
+                        history tracking. By using relative coordinate preprocessing and motion trajectory analysis, the
+                        system achieves efficient real-time classification of both static hand signs and dynamic finger
+                        gestures without high computational cost.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodology Section -->
+        <section id="methodology" class="space-y-12">
+            <h2 class="text-4xl font-black text-center uppercase tracking-tight">System <span
+                    class="text-emerald-500">Methodology</span></h2>
+            <!-- Changed to grid-cols-2 to center the remaining items -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass p-8 rounded-3xl text-center hover:bg-white/5 transition duration-300">
+                    <i class="fas fa-server text-emerald-400 text-3xl mb-4"></i>
+                    <h3 class="font-bold mb-2 uppercase text-xs tracking-widest text-emerald-100">Dataset / Input</h3>
+                    <p class="text-sm text-zinc-500">
+                        Live webcam input is captured using OpenCV. MediaPipe extracts 21 hand landmarks per frame. The
+                        landmarks are converted into relative coordinates and normalized. For dynamic gestures,
+                        fingertip movement history is stored using a fixed-length deque structure to analyze motion
+                        patterns over time.
+                    </p>
+                </div>
+                <div class="glass p-8 rounded-3xl text-center hover:bg-white/5 transition duration-300">
+                    <i class="fas fa-brain text-cyan-400 text-3xl mb-4"></i>
+                    <h3 class="font-bold mb-2 uppercase text-xs tracking-widest text-cyan-100">Model / Architecture</h3>
+                    <p class="text-sm text-zinc-500">
+                        The system uses MediaPipe for hand landmark detection, followed by two custom
+                        classifiers:<br><br>
+                        1. KeyPointClassifier – Classifies static hand gestures using normalized landmark vectors.<br>
+                        2. PointHistoryClassifier – Recognizes dynamic gestures using motion trajectory data.<br><br>
+                        The workflow includes video capture, landmark extraction, preprocessing, classification, and
+                        real-time visualization.
+                    </p>
+                </div>
+                <!-- Live Execution Removed -->
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results" class="glass p-12 rounded-[3.5rem] border-t-4 border-emerald-500">
+            <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tight">Results & <span
+                    class="text-emerald-500">Analysis</span></h2>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="h-80">
+                    <canvas id="resultsChart"></canvas>
+                </div>
+                <div class="space-y-6">
+                    <div
+                        class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10 shadow-inner">
+                        <span class="text-zinc-400 font-bold uppercase text-xs tracking-widest">Accuracy /
+                            Performance</span>
+                        <span class="text-emerald-400 font-mono font-black text-3xl">80%</span>
+                    </div>
+                    <p class="text-zinc-500 text-sm italic text-justify leading-relaxed">
+                        The system achieves high real-time performance with stable frame rates and accurate
+                        classification for trained gestures. Static gestures show strong consistency, while dynamic
+                        gesture recognition benefits from temporal smoothing using history tracking. Compared to
+                        traditional image-based models, this approach reduces computational load while maintaining
+                        reliable accuracy.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="text-center pt-10 border-t border-zinc-800">
+            <h2 class="text-[10px] font-black text-zinc-600 uppercase tracking-[0.5em] mb-12">Academic Credits</h2>
+            <div class="flex flex-wrap justify-center gap-10">
+                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-emerald-600">
+                    <p class="text-[9px] font-bold text-emerald-500 mb-2 uppercase tracking-widest">Project Guide</p>
+                    <p class="font-black text-xl text-zinc-100">Mr. Girish Sharma</p>
+                </div>
+                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-zinc-700">
+                    <p class="text-[9px] font-bold text-zinc-400 mb-2 uppercase tracking-widest">Team Member</p>
+                    <p class="font-black text-xl text-zinc-100">Shabd Sharma</p>
+                    <p class="text-[10px] text-zinc-500 mt-1">23FE10CSE00234</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 text-center bg-black/40 border-t border-zinc-900">
+        <p class="text-zinc-600 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Manipal University Jaipur</p>
+        <p class="text-zinc-500 text-[9px] font-medium tracking-[0.2em] uppercase opacity-50">Department of Computer
+            Science & Engineering • 2026</p>
+    </footer>
+
+    <script>
+        // RESULTS CHART
+        const ctx = document.getElementById('resultsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Existing System', 'Our Solution'],
+                datasets: [{
+                    label: 'Accuracy (%)',
+                    data: [70, 80], // Updated to 80%
+                    backgroundColor: ['#27272a', '#34d399'], // Zinc-800 & Emerald-400
+                    borderRadius: 15,
+                    barThickness: 50
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: { color: '#ffffff05' },
+                        ticks: { color: '#71717a' } // Zinc-500
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#71717a' } // Zinc-500
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
